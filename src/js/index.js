@@ -1,24 +1,19 @@
-/*
-    MVC Model View Control
-    SearchView
-    ResultView
+/* 
+    MVC structure
+
     Model
-    Controller(searchview,resultview,model)
- */
+    Controller (SearchView, ResultsView, Model)
+    Views:
+        - Search
+        - Results
+*/
 
-import SwapiModel from './models/swapi.js';
-import SearchView from './views/search-view.js';
-import ResultsView from './views/results-view.js';
-import SearchController from './controllers/search-controller.js';
+import SearchController from "./controllers/search-controller";
+import SwapiModel from "./models/swapi";
+import ResultsView from "./views/results-view";
+import SearchView from "./views/search-view";
 
-//CREATE an instance of the swapimodel
 const model = new SwapiModel();
-
-//inside function, this ==undefined
-//if you create NEW, "this" is an object
-
-const searchView = new SearchView('#search');
-const resultView = new ResultsView('#results');
-const searchController = new SearchController(model, searchView, resultView);
-
-console.log(searchController);
+const searchView = new SearchView("#search");
+const resultsView = new ResultsView("#results");
+const searchController = new SearchController(model, searchView, resultsView);

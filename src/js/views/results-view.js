@@ -1,4 +1,4 @@
-import ejs from 'ejs';
+import ejs from "ejs";
 
 const personView = `
 <aside class="person">
@@ -20,11 +20,13 @@ const noResultsView = `
  <header>
 </aside>
 `;
+
 function ResultsView(viewId) {
   this.container = document.querySelector(viewId);
+
   this.configUI = function (person) {
     const elem = ejs.render(personView, { person });
-    this.container.insertAdjacentHTML('afterbegin', elem);
+    this.container.insertAdjacentHTML("afterbegin", elem);
   };
 }
 
