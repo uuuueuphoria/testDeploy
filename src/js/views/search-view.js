@@ -6,6 +6,7 @@ function SearchView(viewId) {
 
   this.updateLabel = function (label) {
     // update the label when the radio button changes
+    this.view.querySelector('label[for=searchTerm]').textContent = label;
   };
 
   return this;

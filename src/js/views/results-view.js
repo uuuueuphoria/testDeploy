@@ -1,4 +1,4 @@
-import ejs from "ejs";
+import ejs from 'ejs';
 
 const personView = `
 <aside class="person">
@@ -26,7 +26,25 @@ function ResultsView(viewId) {
 
   this.configUI = function (person) {
     const elem = ejs.render(personView, { person });
-    this.container.insertAdjacentHTML("afterbegin", elem);
+    this.container.insertAdjacentHTML('afterbegin', elem);
+  };
+  this.renderPeople = function (people) {
+    this.removeChildElements();
+    if (people.results.length === 0) {
+      const elem = ejs.render(noResultsView);
+      this.container.insertAdjacentHTML('afterbegin', elem);
+    }
+    if (people.results.length !== 0) {
+      people.results.forEach((person) => {
+        const elem = ejs.render(personView, { person: person });
+        this.container.insertAdjacentHTML('afterbegin', elem);
+      });
+    }
+  };
+  this.removeChildElements = function () {
+    this.container.querySelectorAll('aside').forEach((person) => {
+      this.container.removeChild(person);
+    });
   };
 }
 
